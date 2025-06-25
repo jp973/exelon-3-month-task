@@ -14,6 +14,8 @@ A scalable Node.js + Express + TypeScript backend with JWT-based authentication 
 - 📦 MongoDB (with Mongoose ODM)
 - ⚙️ Middleware Logging (Entry/Exit Logs)
 - 🧪 Validation using `express-validator`
+- s3 storage store and retrieve file
+- 
 - 📁 Scalable Project Structure
 
 ---
