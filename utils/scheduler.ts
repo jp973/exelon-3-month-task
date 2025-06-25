@@ -4,6 +4,13 @@ import User from '../models/db/user';
 import Group from '../models/db/group';
 import { sendNotification } from '../socket';
 import dotenv from 'dotenv';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 
 dotenv.config();
 

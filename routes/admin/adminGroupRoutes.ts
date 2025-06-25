@@ -306,8 +306,8 @@ router.post('/groups/notify', entryLogger, protectAdmin, notifyGroupMembersViaSo
  *               scheduledTime:
  *                 type: string
  *                 format: date-time
- *                 example: "2025-06-25T17:00:00.000Z"
- *                 description: Optional. ISO date-time format. If provided, the message will be sent at this scheduled time.
+ *                 example: "2025-06-25T17:00:00+05:30"
+ *                 description: Optional. Scheduled time in ISO format (use your local time with timezone, e.g., IST +05:30)
  *             required:
  *               - message
  *     responses:
