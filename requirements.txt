@@ -1,0 +1,5 @@
+//Install the client library:
+npm install socket.io-client
+
+//Run your client again:
+node test-socket-client.js
