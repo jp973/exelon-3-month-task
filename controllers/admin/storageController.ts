@@ -1,6 +1,6 @@
-// controllers/storageController.ts
+// project\controllers\admin\storageController.ts
 import { Request, Response, NextFunction } from 'express';
-import { getUploadUrl, getDownloadUrl } from '../services/storage';
+import { getUploadUrl, getDownloadUrl } from '../../services/storage';
 
 export const generateUploadUrl = async (req: Request, res: Response, next: NextFunction) => {
   try {

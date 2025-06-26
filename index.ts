@@ -22,7 +22,7 @@ import notificationRoutes from "./routes/user/notificationRoutes";
 import notificationMemberRoute from './routes/admin/notificationMemberRoutes';
 import userGroupRoutes from './routes/user/userGroupRoutes'; 
 
-import storageRoutes from './routes/storageRoutes';
+import storageRoutes from './routes/admin/storageRoutes';
 import { startMessageScheduler } from './utils/scheduler';
 import memberPaymentRoutes from './routes/admin/memberPaymentRoutes';
 import cors from 'cors';

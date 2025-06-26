@@ -1,6 +1,6 @@
-// routes/storageRoutes.ts
+//project\routes\admin\storageRoutes.ts
 import express from 'express';
-import { generateUploadUrl, generateDownloadUrl } from '../controllers/storageController';
+import { generateUploadUrl, generateDownloadUrl } from '../../controllers/admin/storageController';
 
 const router = express.Router();
 
