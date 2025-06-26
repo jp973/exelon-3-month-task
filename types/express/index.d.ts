@@ -1,6 +1,8 @@
-// src/types/express/index.d.ts
-import { ApiResponse } from '../../utils/apiResponse'; 
+import { ApiResponse } from '../../utils/apiResponse';
 import { JwtPayload } from 'jsonwebtoken';
+import { AdminDocument } from '../../models/db/admin';
+import { UserDocument } from '../../models/db/user';
+import { MemberDocument } from '../../models/db/member';
 
 declare global {
   namespace Express {
@@ -8,18 +10,7 @@ declare global {
       apiResponse?: ApiResponse;
       txtId?: string;
       startTime?: number;
-      user?: string | JwtPayload;
-    }
-  }
-}
-
-import { AdminDocument } from '../../models/db/admin'; // adjust path
-import { UserDocument } from '../../models/db/user';   // adjust path
-
-declare global {
-  namespace Express {
-    interface Request {
-      user?: UserDocument | AdminDocument;
+      user?: UserDocument | AdminDocument | MemberDocument | string | JwtPayload;
     }
   }
 }

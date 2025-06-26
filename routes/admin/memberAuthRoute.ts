@@ -34,10 +34,10 @@ const router = express.Router();
  *               email:
  *                 type: string
  *                 format: email
- *                 example: member@example.com
+ *                 example: roshan.dsouza92@gmail.com
  *               password:
  *                 type: string
- *                 example: secret123
+ *                 example: Roshan@123
  *     responses:
  *       200:
  *         description: Member login successful

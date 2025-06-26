@@ -24,6 +24,8 @@ import userGroupRoutes from './routes/user/userGroupRoutes';
 
 import storageRoutes from './routes/storageRoutes';
 import { startMessageScheduler } from './utils/scheduler';
+import memberPaymentRoutes from './routes/admin/memberPaymentRoutes';
+import cors from 'cors';
 
 
 dotenv.config(); 
@@ -33,7 +35,7 @@ const PORT = 3000;
 
 startMessageScheduler();
 
-
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(passport.initialize());
@@ -55,6 +57,8 @@ app.use('/api/member', userGroupRoutes);
 
 app.use('/api/storage', storageRoutes);
 
+app.use('/api', memberPaymentRoutes);
+
 
 
 // Swagger setup
@@ -72,13 +76,13 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-// --- SOCKET.IO SETUP ---
-const server = http.createServer(app); // Create HTTP server
-initSocket(server); // Initialize Socket.IO with the HTTP server
+ 
+const server = http.createServer(app);  
+initSocket(server);  
 
 connectDB().then(async() => {
-  await seedAdminUser(); // Seed admin user if not exists
-  server.listen(PORT, () => { // <-- Use server.listen, not app.listen
+  await seedAdminUser();  
+  server.listen(PORT, () => {  
     console.log(`Server running on http://localhost:${PORT}`);
     console.log(`Swagger docs at http://localhost:${PORT}/api-docs`);
   });
