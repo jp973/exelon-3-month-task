@@ -3,14 +3,16 @@
 import express from 'express';
 import { createOrderMember, verifyOrderMember } from '../../controllers/admin/memberPayment';
 import passport from '../../middleware/passport';
+import { handleRazorpayWebhook } from '../../controllers/admin/webhookController'
+
 const protectMember = passport.authenticate('member-bearer', { session: false });
 
-
+console.log("webhook function is",typeof(handleRazorpayWebhook))
 
 const router = express.Router();
 
 /**
- * @swagger
+ * @swaggers
  * /api/member/order:
  *   post:
  *     summary: Create a Razorpay order for a member
@@ -59,5 +61,29 @@ router.post('/member/order', protectMember, createOrderMember);
  *         description: Failed to verify payment
  */
 router.post('/member/verify', protectMember, verifyOrderMember);
+
+/**
+ * @swagger
+ * /api/webhook:
+ *   post:
+ *     summary: Handle Razorpay webhook events
+ *     tags:
+ *       - Razorpay Webhook
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             additionalProperties: true
+ *     responses:
+ *       200:
+ *         description: Webhook received and processed
+ *       400:
+ *         description: Invalid webhook signature
+ *       500:
+ *         description: Internal server error
+ */
+router.post('/webhook', express.raw({ type: 'application/json' }), handleRazorpayWebhook);
 
 export default router;

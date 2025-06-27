@@ -31,13 +31,19 @@ import cors from 'cors';
 dotenv.config(); 
 
 const app = express();
+app.use((req, res, next) => {
+  if (req.originalUrl === '/api/webhook') {
+    next(); // Let `express.raw()` handle it
+  } else {
+    express.json()(req, res, next); // Apply json parser for everything else
+  }
+});
 const PORT = 3000;
 
 startMessageScheduler();
 
 app.use(cors());
 app.use(cookieParser());
-app.use(express.json());
 app.use(passport.initialize());
 
 
@@ -58,6 +64,7 @@ app.use('/api/member', userGroupRoutes);
 app.use('/api/storage', storageRoutes);
 
 app.use('/api', memberPaymentRoutes);
+
 
 
 
