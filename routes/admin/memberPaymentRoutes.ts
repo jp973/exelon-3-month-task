@@ -12,7 +12,7 @@ console.log("webhook function is",typeof(handleRazorpayWebhook))
 const router = express.Router();
 
 /**
- * @swaggers
+ * @swagger
  * /api/member/order:
  *   post:
  *     summary: Create a Razorpay order for a member
@@ -68,7 +68,7 @@ router.post('/member/verify', protectMember, verifyOrderMember);
  *   post:
  *     summary: Handle Razorpay webhook events
  *     tags:
- *       - Razorpay Webhook
+ *       - Member Payments
  *     requestBody:
  *       required: true
  *       content:

@@ -1,4 +1,4 @@
-//project\controllers\admin\payment.ts
+//project\controllers\admin\memberPayment.ts
 
 import { Request, Response } from 'express';
 import { createRazorpayOrder, verifySignature } from '../../services/payment/razorpay';
@@ -12,9 +12,6 @@ export const createOrderMember = async (req: Request, res: Response) => {
     const memberId = member._id;
 
     const amount = 200;
-
-  
-
     const order = await createRazorpayOrder(amount);
 
     await Order.create({
@@ -33,7 +30,6 @@ export const createOrderMember = async (req: Request, res: Response) => {
 export const verifyOrderMember = async (req: Request, res: Response) => {
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-
     const isValid = verifySignature(razorpay_order_id, razorpay_payment_id, razorpay_signature);
     if (!isValid) {
       return res.status(400).json({ success: false, message: 'Invalid signature' });
